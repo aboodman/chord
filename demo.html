@@ -1,0 +1,46 @@
+<html>
+<head>
+
+<title> youngpup.net: 2027.org News Scroller </title>
+
+<link rel="stylesheet" type="text/css" href="http://youngpup.net/css/demo.css">
+<script language="javascript" src="chord.js"></script>
+<script language="javascript">
+  function setup() {
+    var chords = [new Chord("sl"), new Chord("zbs")];
+    for (var i = 0; i < chords.length; i++) {
+      chords[i].onComplete = handleComplete;
+      chords[i].onReset = handleReset;
+      chords[i].start();
+    }
+  }
+
+  function handleComplete() {
+    debugWrite(this.chordWord + " Complete!");
+  }
+
+  function handleReset() {
+    debugWrite(this.chordWord + " Reset :(");
+  }
+
+  function debugWrite(str) {
+    document.getElementById("txtDebug").value += str + "\n";
+  }
+</script>
+
+<body onload="setup()">
+<div id="banner"></div>
+<h1>Chord.js Demo</h1>
+
+<p>Try the following tests:</p>
+<ul>
+  <li>CTRL + S,L</li>
+  <li>CTRL + Z,B,S</li>
+</ul>
+<p>
+<textarea id="txtDebug" cols="30" rows="5"></textarea><br>
+<button onclick="document.getElementById('txtDebug').value = ''">Clear</button>
+</p>
+
+</body>
+</html>
